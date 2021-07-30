@@ -1,0 +1,1016 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/learn-js.css" />
+
+	<title>Изучение JavaScript</title>
+	<script src="js/learn.js"></script>
+</head>
+
+<body>
+	<div class="page__conteiner">
+		<header class="head" id="header">
+			<h1 onclick="fpro()">"Язык JavaScript"</h1>
+			<h2>Темы:</h2>
+		</header>
+		<main class="main">
+			<section id="tasks">
+				<article id="a1" class="test">
+					<details>
+						<summary>Преобразование типов <span id="s1" class="resy"></span> </summary>
+						<div class="test__content">
+							<h2>В JavaScript есть 7 основных типов.</h2>
+							<p><strong>number</strong> для любых чисел: целочисленных или чисел с плавающей точкой.</p>
+							<p><strong>string</strong> для строк. Строка может содержать один или больше символов, нет
+								отдельного символьного типа.</p>
+							<p><strong>boolean</strong> для true / false.</p>
+							<p><strong>null</strong> для неизвестных значений – отдельный тип, имеющий одно значение null.</p>
+							<p><strong>undefined</strong> для неприсвоенных значений – отдельный тип, имеющий одно значение
+								undefined.</p>
+							<p><strong>object</strong> для более сложных структур данных.</p>
+							<p><strong>symbol</strong> для уникальных идентификаторов.</p>
+							<p>Оператор <strong>typeof</strong> позволяет нам увидеть, какой тип данных сохранён в переменной.
+								Имеет две формы: typeof x или typeof(x).</p>
+							<p>Возвращает строку с именем типа. Например, "string".</p>
+							<p>Для null возвращается "object" – это ошибка в языке, на самом деле это не объект.</p>
+							<h2>Преобразование типов</h2>
+							<p>Существует 3 наиболее широко используемых преобразований: строковое, численное и логическое.</p>
+							<p><strong>Строковое</strong> – Происходит, когда там нужно что-то вывести. Может быть вызвано с
+								помощью String(value) . Для примитивных значений работает очевидным образом.</p>
+							<p> <strong>Численное</strong> – Происходит в математических операциях. Может быть вызвано с
+								помощью Number(value) .</p>
+							<p>Преобразование подчиняется правилам:</p>
+							<table>
+								<colgroup>
+									<col span="1" class="left-column">
+									<col span="1" class="right-column">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>Значение</th>
+										<th>Становится…</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>undefined</td>
+										<td>NaN</td>
+									</tr>
+									<tr>
+										<td>null</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>true / false</td>
+										<td> 1 / 0</td>
+									</tr>
+									<tr>
+										<td>string</td>
+										<td>Пробельные символы по краям обрезаются. Далее, если остаётся пустая строка, то 0 ,
+											иначе из непустой строки «считывается» число. При ошибке результат NaN </td>
+									</tr>
+								</tbody>
+							</table>
+							<p><strong>Логическое </strong>– Происходит в логических операторах. Может быть вызвано с помощью
+								Boolean(value) .</p>
+							<p>Подчиняется правилам:</p>
+							<table>
+								<colgroup>
+									<col span="1" class="left-column">
+									<col span="1" class="right-column">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>Значение</th>
+										<th>Становится…</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>0 , null , undefined , NaN , ""</td>
+										<td> false</td>
+									</tr>
+									<tr>
+										<td>любое другое значение</td>
+										<td> true</td>
+									</tr>
+								</tbody>
+							</table>
+							<p>Большую часть из этих правил легко понять и запомнить. Особые случаи, в которых часто
+								допускаются ошибки:</p>
+							<p>undefined при численном преобразовании становится NaN , не 0.</p>
+							<p>"0" и строки с одними пробелами вроде " " при логическом преобразовании всегда true.</p>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop1" id="b1" class="show-popup">Задание</a>
+							<div id="d1" class="s-res"> Результат: <span class="resy" id="r1">0%</span> (Правильных ответов
+								<span id="no1"></span> из <span id="nv1"></span>)
+							</div>
+						</div>
+					</details>
+				</article><!-- Тема 1 id=a1-->
+				<article id="a2" class="test">
+					<!--Тема2-->
+					<details>
+						<summary>Шаблонные строки <span id="s2" class="resy"></span> </summary>
+						<div class="test__content">
+							<p>В JavaScript существует три типа кавычек.</p>
+							<p>1. Двойные кавычки: "Привет".</p>
+							<p>2. Одинарные кавычки: 'Привет'.</p>
+							<p>3. Обратные кавычки: `Привет`.</p>
+							<p>Двойные или одинарные кавычки являются «простыми», между ними нет разницы в JavaScript. </p>
+							<p>Обратные кавычки же имеют «расширенный функционал». Они позволяют нам встраивать выражения в
+								строку, заключая их в ${…}.</p>
+							<p>Например:</p>
+							<pre><code>
+let name = "Иван"; 
+<span class="rem">// Вставим переменную</span>
+alert( `Привет, ${name}!` ); <span class="rem">// Привет, Иван! </span>
+<span class="rem">// Вставим выражение</span>
+alert( `результат: ${1 + 2}` ); <span class="rem">/ результат: 3</span>/
+							</code></pre>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop2" id="b2" class="show-popup">Задание</a>
+							<div id="d2" class="s-res"> Результат: <span class="resy" id="r2">0%</span> (Правильных ответов
+								<span id="no2"></span> из <span id="nv2"></span>)
+							</div>
+						</div>
+					</details>
+				</article><!-- Тема 2 id=a2-->
+				<article id="a3" class="test">
+					<details>
+						<summary>Операторы. Постфиксные и префиксные операции <span id="s3" class="resy"></span> </summary>
+						<div class="test__content">
+							<h2>Приоритет</h2>
+							<table>
+								<colgroup>
+									<col span="3" class="left-column">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>Приоритет</th>
+										<th>Название</th>
+										<th>Обозначение</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="centr">19</td>
+										<td class="centr">Вызов функции</td>
+										<td class="centr">...(…)</td>
+									</tr>
+									<tr>
+										<td class="centr">…</td>
+										<td class="centr">…</td>
+										<td class="centr">…</td>
+									</tr>
+									<tr>
+										<td class="centr">17</td>
+										<td class="centr">Постфиксный инкремент</td>
+										<td class="centr">…++</td>
+									</tr>
+									<tr>
+										<td class="centr">17</td>
+										<td class="centr">Постфиксный декремент</td>
+										<td class="centr">…--</td>
+									</tr>
+									<tr>
+										<td class="centr">16</td>
+										<td class="centr">унарный плюс</td>
+										<td class="centr">+</td>
+									</tr>
+									<tr>
+										<td class="centr">16</td>
+										<td class="centr">унарный минус</td>
+										<td class="centr">-</td>
+									</tr>
+									<tr>
+										<td class="centr">16</td>
+										<td class="centr">Префиксный инкремент</td>
+										<td class="centr">++…</td>
+									</tr>
+									<tr>
+										<td class="centr">16</td>
+										<td class="centr">Префиксный декремент</td>
+										<td class="centr">--…</td>
+									</tr>
+									<tr>
+										<td class="centr">15</td>
+										<td class="centr">Возведение в степень</td>
+										<td class="centr">...**...</td>
+									</tr>
+									<tr>
+										<td class="centr">14</td>
+										<td class="centr">умножение</td>
+										<td class="centr">*</td>
+									</tr>
+									<tr>
+										<td class="centr">14</td>
+										<td class="centr">деление</td>
+										<td class="centr">/</td>
+									</tr>
+									<tr>
+										<td class="centr">13</td>
+										<td class="centr">сложение</td>
+										<td class="centr">+</td>
+									</tr>
+									<tr>
+										<td class="centr">13</td>
+										<td class="centr">вычитание</td>
+										<td class="centr">-</td>
+									</tr>
+									<tr>
+										<td class="centr">…</td>
+										<td class="centr">…</td>
+										<td class="centr">…</td>
+									</tr>
+									<tr>
+										<td class="centr">3</td>
+										<td class="centr">присваивание</td>
+										<td class="centr">=</td>
+									</tr>
+									<tr>
+										<td class="centr">…</td>
+										<td class="centr">…</td>
+										<td class="centr">…</td>
+									</tr>
+									<tr>
+										<td class="centr">1</td>
+										<td class="centr">Запятая</td>
+										<td class="centr">...,...</td>
+									</tr>
+								</tbody>
+							</table>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop3" id="b3" class="show-popup">Задание</a>
+							<div id="d3" class="s-res"> Результат: <span class="resy" id="r3">0%</span> (Правильных ответов
+								<span id="no3"></span> из <span id="nv3"></span>)
+							</div>
+						</div>
+					</details>
+				</article><!-- Тема 3 id=a3-->
+				<article id="a4" class="test">
+					<details>
+						<summary>Составной оператор присваивания <span id="s4" class="resy"></span> </summary>
+						<div class="test__content">
+							<p>Составные операторы присваивания существуют для всех арифметических и побитовых операторов: +=,
+								-=, /= , *=, %=, и так далее.</p>
+							<p>Вызов с присваиванием имеет в точности такой же приоритет, как обычное присваивание, то есть
+								выполнится после большинства других операций.</p>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop4" id="b4" class="show-popup">Задание</a>
+							<div id="d4" class="s-res"> Результат: <span class="resy" id="r4">0%</span> (Правильных ответов
+								<span id="no4"></span> из <span id="nv4"></span>)
+							</div>
+						</div>
+					</details>
+				</article><!-- Тема 4 id=a4-->
+				<article id="a5" class="test">
+					<details>
+						<summary>Операторы сравнения <span id="s5" class="resy"></span> </summary>
+						<div class="test__content">
+							<p>Операторы сравнения возвращают значения логического типа.</p>
+							<p>Строки сравниваются посимвольно в лексикографическом порядке.</p>
+							<p>Значения разных типов при сравнении приводятся к числу. Исключением является сравнение с помощью
+								операторов строгого равенства (===) / неравенства (!==).</p>
+							<p>Значения <strong>null</strong> и <strong>undefined</strong> равны == друг другу и не равны
+								любому другому. Но при строгом сравнении они не равны,так различны их типы.</p>
+							<p>При использовании математических операторов и других операторов сравнения &lt; &gt; &lt;= &gt;=
+								значения null/undefined преобразуются к числам: null становится 0 , а undefined – NaN.</p>
+							<p>Будьте осторожны при использовании операторов сравнений &gt; и &lt; с переменными, которые могут
+								принимать значения null/undefined. Хорошей идеей будет сделать отдельную проверку на
+								null/undefined.</p>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop5" id="b5" class="show-popup">Задание</a>
+							<div id="d5" class="s-res"> Результат: <span class="resy" id="r5">0%</span> (Правильных ответов
+								<span id="no5"></span> из <span id="nv5"></span>)
+							</div>
+						</div>
+					</details>
+				</article><!-- Тема 5 id=a5-->
+				<article id="a6" class="test">
+					<details>
+						<summary>Условные операторы "if-else" и "?" <span id="s6" class="resy"></span> </summary>
+						<div class="test__content">
+							<p>Оператор if (…) вычисляет выражение в скобках и преобразует результат к логическому типу.</p>
+							<p> Оператор ?</p>
+							<p>let result = условие ? значение1 : значение2;</p>
+							<p>Последовательность операторов вопросительного знака ? позволяет вернуть значение, которое
+								зависит от более чем одного условия.</p>
+
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop6" id="b6" class="show-popup">Задание</a>
+							<div id="d6" class="s-res"> Результат: <span class="resy" id="r6">0%</span> (Правильных ответов
+								<span id="no6"></span> из <span id="nv6"></span>)
+							</div>
+						</div>
+					</details>
+				</article><!-- Тема 6 id=a6-->
+				<article id="a7" class="test">
+					<details>
+						<summary>Логические операции <span id="s7" class="resy"></span> </summary>
+						<div class="test__content">
+							<p><strong>ИЛИ «||»</strong> находит <strong>первое истинное</strong> значение</p>
+							<p><strong>И «&&»</strong> находит <strong>первое ложное</strong> значение</p>
+							<p>Приоритет оператора && больше, чем у || </p>
+							<p>Оператор ! (НЕ) принимает один аргумент и выполняет следующие действия:</p>
+							<p>1. Сначала приводит аргумент к логическому типу true/false.</p>
+							<p>2. Затем возвращает противоположное значение.</p>
+							<p>Приоритет НЕ ! является наивысшим из всех логических операторов, поэтому он всегда выполняется
+								первым, перед && или || </p>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop7" id="b7" class="show-popup">Задание</a>
+							<div id="d7" class="s-res"> Результат: <span class="resy" id="r7">0%</span> (Правильных ответов
+								<span id="no7"></span> из <span id="nv7"></span>)
+							</div>
+						</div>
+						</detaits>
+				</article><!-- Тема 7 id=a7-->
+				<article id="a8" class="test">
+					<details>
+						<summary>Циклы <span id="s8" class="resy"></span> </summary>
+						<div class="test__content">
+							<p>Имеется 3 вида циклов:</p>
+							<p><strong>while </strong>– Проверяет условие перед каждой итерацией.</p>
+							<p><strong>do..while</strong> – Проверяет условие после каждой итерации.</p>
+							<p><strong>for (;;)</strong> – Проверяет условие перед каждой итерацией, есть возможность задать
+								дополнительные настройки.</p>
+							<p>Чтобы организовать бесконечный цикл, используют конструкцию while (true) . При этом он, как и
+								любой другой цикл, может быть прерван директивой break.</p>
+							<p>Если на данной итерации цикла делать больше ничего не надо, но полностью прекращать цикл не
+								следует – используют директиву continue.</p>
+							<p>Обе этих директивы поддерживают метки, которые ставятся перед циклом. Метки – единственный
+								способ для break/continue выйти за пределы текущего цикла, повлиять на выполнение внешнего.</p>
+							<p>Заметим, что метки не позволяют прыгнуть в произвольное место кода, в JavaScript нет такой
+								возможности.</p>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop8" id="b8" class="show-popup">Задание</a>
+							<div id="d8" class="s-res"> Результат: <span class="resy" id="r8">0%</span> (Правильных ответов
+								<span id="no8"></span> из <span id="nv8"></span>)
+							</div>
+						</div>
+						</detaits>
+				</article><!-- Тема 8 id=a8-->
+				<article id="a9" class="test">
+					<details>
+						<summary>Функции <span id="s9" class="resy"></span> </summary>
+						<div class="test__content">
+							<p>Объявление функции имеет вид:</p>
+							<pre><code>
+	function имя(параметры, через, запятую) { 
+  		<span class="rem">/* тело, код функции */</span>
+	}
+							</code></pre>
+							<p>Передаваемые значения копируются в параметры функции и становятся локальными переменными.</p>
+							<p>Функции имеют доступ к внешним переменным. Но это работает только изнутри наружу.</p>
+							<p>Код вне функции не имеет доступа к её локальным переменным.</p>
+							<p>Функция может возвращать значение. Если этого не происходит, тогда результат равен undefined .
+							</p>
+							<p>Для того, чтобы сделать код более чистым и понятным, рекомендуется использовать локальные
+								переменные и параметры функций, не пользоваться внешними переменными.</p>
+							<p>Функция, которая получает параметры, работает с ними и затем возвращает результат, гораздо
+								понятнее функции, вызываемой без параметров, но изменяющей внешние переменные, что чревато
+								побочными эффектами.</p>
+							<p>Именование функций:</p>
+							<p>Имя функции должно понятно и чётко отражать, что она делает. Увидев её вызов в коде, вы должны
+								тут же понимать, что она делает, и что возвращает.</p>
+							<p>Функция – это действие, поэтому её имя обычно является глаголом.</p>
+							<p>Есть много общепринятых префиксов, таких как: create…, show…, get…, check… и т.д. Пользуйтесь
+								ими как подсказками, поясняющими, что делает функция.</p>
+						</div><!-- test__content-->
+						<div class="test__footer">
+							<a href="#pop9" id="b9" class="show-popup">Задание</a>
+							<div id="d9" class="s-res"> Результат: <span class="resy" id="r9">0%</span> (Правильных ответов
+								<span id="no9"></span> из <span id="nv9"></span>)
+							</div>
+						</div>
+						</detaits>
+				</article><!-- Тема 9 id=a9-->
+			</section> <!-- tasks  -->
+		</main>
+		<footer class="footer">
+			<div class="podpis">Олег Варавка - 2021 - Углегорск - по материалам книги Ильи Кантора</div>
+		</footer>
+	</div><!-- page_conteiner> -->
+	<div id="pop1" class="popupwindow">
+		<!--	Task 1	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Преобразование типов</div>
+				<p>Каков результат выражения:</p>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 1_1	-->
+					<div class="label">"" + 1 + 0</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_1">
+					</div>
+					<!--	task 1_2	-->
+					<div class="label">true + false</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_2">
+					</div>
+					<!--	task 1_3	-->
+					<div class="label">6 / "3"</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_3">
+					</div>
+					<!--	task 1_4	-->
+					<div class="label">"2" * "3"</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_4">
+					</div>
+					<!--	task 1_5	-->
+					<div class="label">4 + 5 + "px"</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_5">
+					</div>
+					<!--	task 1_6	-->
+					<div class="label">"$" + 4 + 5</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_6">
+					</div>
+					<!--	task 1_7	-->
+					<div class="label">"4" - 2</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_7">
+					</div>
+					<!--	task 1_8	-->
+					<div class="label">"4px" - 2</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_8">
+					</div>
+					<!--	task 1_9	-->
+					<div class="label">7/0</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_9">
+					</div>
+					<!--	task 1_10	-->
+					<div class="label">"-9" + 5</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_10">
+					</div>
+					<!--	task 1_11	-->
+					<div class="label">"-9" - 5</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_11">
+					</div>
+					<!--	task 1_12	-->
+					<div class="label">null + 1</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_12">
+					</div>
+					<!--	task 1_13	-->
+					<div class="label">undefined + 1</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_13">
+					</div>
+					<!--	task 1_14	-->
+					<div class="label">"\t \n" - 2</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i1_14">
+					</div>
+				</div>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb1" class="form__button" onclick="Proverka(1,14)">Сдать работу</button>
+				</div>
+			</div>
+		</div>
+	</div><!-- End of Task 1  -->
+	<div id="pop2" class="popupwindow">
+		<!--	Task 2	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Шаблонные строки</div>
+				<p>Что выведет следующий код:</p>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 2_1	-->
+					<div class="label">
+						<pre><code>
+let name="Gora";
+alert(`Hello ${1}`);
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd100" id="i2_1">
+					</div>
+					<!--	task 2_2	-->
+					<div class="label">
+						<pre><code>
+let name="Gora";
+alert(`Hello ${"name"}`);
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd100" id="i2_2">
+					</div>
+					<!--	task 2_3	-->
+					<div class="label">
+						<pre><code>
+let name="Gora";
+alert(`Hello ${name}`);
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd100" id="i2_3">
+					</div>
+				</div>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb2" class="form__button" onclick="Proverka(2, 3)">Сдать работу</button>
+				</div>
+			</div>
+		</div>
+	</div><!-- End of Task 2  -->
+	<div id="pop3" class="popupwindow">
+		<!--	Task 3	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Постфиксные и префиксные операции</div>
+				<p>Укажите значения переменных после выполнения следующего кода:</p>
+				<pre><code>
+let a=1;
+let b=1;
+let c=++a;
+let d=b++;
+</code></pre>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 3_1	-->
+					<div class="label">a</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i3_1">
+					</div>
+					<!--	task 3_2	-->
+					<div class="label">b</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i3_2">
+					</div>
+					<!--	task 3_3	-->
+					<div class="label">c</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i3_3">
+					</div>
+					<!--	task 3_4	-->
+					<div class="label">d</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i3_4">
+					</div>
+				</div>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb3" class="form__button" onclick="Proverka(3,4)">Сдать работу</button>
+				</div>
+			</div>
+		</div>
+	</div><!-- End of Task 3  -->
+	<div id="pop4" class="popupwindow">
+		<!--	Task 4	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Составной оператор присваивания</div>
+				<p>Укажите значения переменных после выполнения следующего кода:</p>
+				<pre><code>
+let a = 2; 
+let x = 1 + (a *= 2);
+</code></pre>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 4_1	-->
+					<div class="label">a</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i4_1">
+					</div>
+					<!--	task 4_2	-->
+					<div class="label">x</div>
+					<div class="wd-input">
+						<input type="text" class="form__input" id="i4_2">
+					</div>
+				</div>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb4" class="form__button" onclick="Proverka(4,2)">Сдать работу</button>
+				</div>
+			</div>
+		</div>
+	</div><!-- End of Task 4  -->
+	<div id="pop5" class="popupwindow">
+		<!--	Task 5	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Операторы сравнения</div>
+				<p>Каким будет результат этих выражений:</p>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 5_1	-->
+					<div class="label">5 > 4</div>
+					<div class="wd-input">
+						<select class="form__input wd60" id="i5_1">
+							<option value="false">false</option>
+							<option value="true">true</option>
+						</select>
+					</div>
+					<!--	task 5_2	-->
+					<div class="label">"ананас" > "яблоко"</div>
+					<div class="wd-input">
+						<select class="form__input wd60" id="i5_2">
+							<option value="false">false</option>
+							<option value="true">true</option>
+						</select>
+					</div>
+					<!--	task 5_3	-->
+					<div class="label">"2" > "12"</div>
+					<div class="wd-input">
+						<select class="form__input wd60" id="i5_3">
+							<option value="false">false</option>
+							<option value="true">true</option>
+						</select>
+					</div>
+					<!--	task 5_4	-->
+					<div class="label">undefined == null</div>
+					<div class="wd-input">
+						<select class="form__input wd60" id="i5_4">
+							<option value="false">false</option>
+							<option value="true">true</option>
+						</select>
+					</div>
+					<!--	task 5_5	-->
+					<div class="label">undefined === null</div>
+					<div class="wd-input">
+						<select class="form__input wd60" id="i5_5">
+							<option value="false">false</option>
+							<option value="true">true</option>
+						</select>
+					</div>
+					<!--	task 5_6	-->
+					<div class="label">null == "\n0\n"</div>
+					<div class="wd-input">
+						<select class="form__input wd60" id="i5_6">
+							<option value="false">false</option>
+							<option value="true">true</option>
+						</select>
+					</div>
+					<!--	task 5_7	-->
+					<div class="label">null === +"\n0\n"</div>
+					<div class="wd-input">
+						<select class="form__input wd60" id="i5_7">
+							<option value="false">false</option>
+							<option value="true">true</option>
+						</select>
+					</div>
+				</div>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb5" class="form__button" onclick="Proverka(5,7)">Сдать работу</button>
+				</div>
+			</div>
+		</div>
+	</div> <!-- End of Task 5  -->
+	<div id="pop6" class="popupwindow">
+		<!--	Task 6	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Условные операторы "if-else" и "?"</div>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 6_1	-->
+					<div class="label">
+						<p>Выведется ли alert ?</p>
+						<pre><code>
+if ("0") { 
+	alert( 'Привет' );
+}
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<select class="form__input" id="i6_1">
+							<option value="нет">нет</option>
+							<option value="да">да</option>
+						</select>
+					</div>
+					<!--	task 6_2	-->
+					<div class="label">
+						<p>Перепишите if с использованием условного оператора '?' :</p>
+						<pre><code>
+let result; 
+if (a + b &lt; 4) { 
+	result = 'Мало';
+} else { 
+	result = 'Много';
+}
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<textarea id="i6_2" rows="3" cols="20"></textarea>
+					</div>
+					<!--	task 6_3	-->
+					<div class="label">
+						<p>Перепишите 'if..else' с использованием условного оператора '?' :</p>
+						<pre><code>
+let message; 
+if (login == 'Сотрудник') { 
+	message = 'Привет';
+} else if (login == 'Директор') { 
+	message = 'Здравствуйте';
+} else if (login == '') { 
+	message = 'Нет логина';
+} else { 
+	message = '';
+}
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<textarea id="i6_3" rows="10" cols="20"></textarea>
+					</div>
+					<p><strong>Примечание:</strong> проверочный код не является единственно правильным!</p>
+				</div>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb6" class="form__button" onclick="Proverka(6,3)">Сдать работу</button>
+				</div>
+			</div>
+		</div>
+	</div> <!-- End of Task 6  -->
+	<div id="pop7" class="popupwindow">
+		<!--	Task 7	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Условные операции</div>
+				<p>Каков будет вывод:</p>
+				<p>Последовательный вывод укажите через запятую.</p>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 7_1	-->
+					<div class="label">
+						<pre><code>
+alert( null || 2 || undefined );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_1">
+					</div>
+					<!--	task 7_2	-->
+					<div class="label">
+						<pre><code>
+alert( alert(1) || 2 || alert(3) );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_2">
+					</div>
+					<!--	task 7_3	-->
+					<div class="label">
+						<pre><code>
+alert( 1 && null && 2 );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_3">
+					</div>
+					<!--	task 7_4	-->
+					<div class="label">
+						<pre><code>
+alert( alert(1) && alert(2) );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_4">
+					</div>
+					<!--	task 7_5	-->
+					<div class="label">
+						<pre><code>
+alert( null || 2 && 3 || 4 );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_5">
+					</div>
+					<!--	task 7_6	-->
+					<div class="label">
+						<p>Напишите условие для проверки, что переменная age находится в диапазоне между
+							14 и 90 включительно.</p>
+					</div>
+					<div class="wd-input">
+						<textarea id="i7_6" rows="3" cols="20"></textarea>
+					</div>
+					<!--	task 7_7	-->
+					<div class="label">
+						<p>Напишите условие if для проверки, что значение переменной age НЕ находится в
+							диапазоне 14 и 90 включительно.
+							Напишите два варианта: первый с использованием оператора НЕ</p>
+					</div>
+					<div class="wd-input">
+						<textarea id="i7_7" rows="3" cols="20"></textarea>
+					</div>
+					<!--	task 7_8	-->
+					<div class="label">второй – без этого
+						оператора.</div>
+					<div class="wd-input">
+						<textarea id="i7_8" rows="3" cols="20"></textarea>
+					</div>
+					<!--	task 7_9	-->
+					<div class="label">
+						<p>Какие значения будут результатами выражений в условиях if(...) ?</p>
+						<pre><code>
+if (-1 || 0)
+	alert( 'first' );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_9">
+					</div>
+					<!--	task 7_10	-->
+					<div class="label">
+						<pre><code>
+if (-1 && 0) 
+	alert( 'second' );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_10">
+					</div>
+					<!--	task 7_11	-->
+					<div class="label">
+						<pre><code>
+if (null || -1 && 1) 
+	alert( 'third' );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i7_11">
+					</div>
+				</div>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb7" class="form__button" onclick="Proverka(7,11)">Сдать работу</button>
+				</div>
+			</div>
+		</div>
+	</div> <!-- End of Task 7  -->
+	<div id="pop8" class="popupwindow">
+		<!--	Task 8	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Циклы</div>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 8_1	-->
+					<div class="label">
+						<p>Какое последнее значение выведет этот код?</p>
+						<pre><code>
+let i = 3; 
+while (i) { 
+	alert( i-- );
+}
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd60" id="i8_1">
+					</div>
+					<!--	task correct8_2	-->
+					<div class="label">
+						<p>Перечислите выводимые значения через запятую:</p>
+						<pre><code>
+let i = 0;
+while (++i < 5) alert( i );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd100" id="i8_2">
+					</div>
+					<!--	task 8_3	-->
+					<div class="label">
+						<p>Перечислите выводимые значения через запятую:</p>
+						<pre> <code>
+let i = 0;
+while (i++ < 5) alert( i );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd100" id="i8_3">
+					</div>
+					<!--	task 8_4	-->
+					<div class="label">
+						<p>Перечислите выводимые значения через запятую:</p>
+						<pre> <code>
+for (let i = 0; i < 5; i++) alert( i );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd100" id="i8_4">
+					</div>
+					<!--	task 8_5	-->
+					<div class="label">
+						<p>Перечислите выводимые значения через запятую:</p>
+						<pre> <code>
+for (let i = 0; i < 5; ++i) alert( i );
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<input type="text" class="form__input wd100" id="i8_5">
+					</div>
+					<!--	task 8_6	-->
+					<div class="label">
+						<p>При помощи цикла for выведите чётные числа от 2 до 10</p>
+					</div>
+					<div class="wd-input">
+						<textarea id="i8_6" rows="4" cols="20"></textarea>
+					</div>
+					<!--	task 8_7	-->
+					<div class="label">
+						<p>Перепишите код, заменив цикл for на while , без изменения поведения цикла.</p>
+						<pre> <code>
+for (let i = 0; i < 3; i++) { 
+	alert( `number ${i}!` );
+}
+</code></pre>
+					</div>
+					<div class="wd-input">
+						<textarea id="i8_7" rows="4" cols="20"></textarea>
+					</div>
+				</div>
+				<p><strong>Примечание:</strong> проверочный код не является единственно правильным!</p>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb8" class="form__button" onclick="Proverka(8,7)">Сдать работу</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div> <!-- End of Task 8  -->
+	<div id="pop9" class="popupwindow">
+		<!--	Task 9	-->
+		<a href="#header" class="popup__area"></a>
+		<div class="popup__body">
+			<div class="popup__content">
+				<a href="#header" class="popup__close">x</a>
+				<div class="popup__title">Циклы</div>
+				<p>Перепишите функцию, чтобы она делала то же самое, но без if, в одну строку.</p>
+				<pre><code>
+function checkAge(age) { 
+	if (age > 18) { 
+		return true; 
+	} else { 
+		return confirm('Родители разрешили?'); 
+	}
+}
+</code></pre>
+				<div class="popup__form">
+					<!--	задания формы		-->
+					<!--	task 9_1	-->
+					<div class="label">
+						<p>Используя оператор "?"</p>
+					</div>
+					<div class="wd-input">
+						<textarea id="i9_1" rows="4" cols="30"></textarea>
+					</div>
+					<!--	task 9_2	-->
+					<div class="label">
+						<p>Используя оператор "||"</p>
+					</div>
+					<div class="wd-input">
+						<textarea id="i9_2" rows="4" cols="30"></textarea>
+					</div>
+				</div>
+				<p><strong>Примечание:</strong> проверочный код не является единственно правильным!</p>
+				<!--	постоянная часть	-->
+				<div class="form__footer">
+					<button id="fb9" class="form__button" onclick="Proverka(9,2)">Сдать работу</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div> <!-- End of Task 9  -->
+	<!--	TODO: добавлять всплывающие формы	-->
+</body>
+
+</html>
